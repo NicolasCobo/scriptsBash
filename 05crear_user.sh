@@ -4,6 +4,7 @@ function usage(){
     echo "Usage ${0}"
     echo
     echo "has de ser root"
+    echo "L'usuari no es por repetir"
     exit 1 #indica que hi ha agut una errada
 }
 
