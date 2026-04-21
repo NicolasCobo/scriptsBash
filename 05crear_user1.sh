@@ -21,8 +21,8 @@ fi
 read -p "Introdueix el nom complet: " COMMENTS
 #demanam el nom de l'usuari
 read -p "Introduex el nom d'usuari: " USER_NAME
-#demanam el password
-read -p "Introduex el password: " PASSWORD
+#generarem aleatoriament 
+PASSWORD=$(date +%s%N | sha256sum | head -c10)
 
 #creariem l'usuari
 useradd -m -c "${COMMENTS}" ${USER_NAME} &> /dev/null
@@ -45,6 +45,9 @@ fi
 #fer canviar el passwd
 passwd -e ${USER_NAME}
 
-
+#informam del que se ha creat
+echo "Usuari creat: ${USER_NAME}"
+echo "password generat: ${PASSWORD}"
+echo "hOSTname: ${HOSTNAME}"
 
 exit 0
