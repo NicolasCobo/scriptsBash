@@ -20,6 +20,7 @@ then
 fi
 
 #hem de comprovar que tenim al manco un paràmetre
+if [[ ${#} -eq 0 ]]
 then 
     usage 
 fi
@@ -29,6 +30,7 @@ USER_NAME=${1}
 shift 
 COMMENTS=${*}
 
+#generam password aleatoriament
 PASSWORD=$(date +%s%N | sha256sum | head -c10)
 
 #creariem l'usuari
@@ -53,6 +55,7 @@ fi
 passwd -e ${USER_NAME}
 
 #informam del que se ha creat
+echo "Nom complet: ${COMMENTS}"
 echo "Usuari creat: ${USER_NAME}"
 echo "password generat: ${PASSWORD}"
 echo "hOSTname: ${HOSTNAME}"
